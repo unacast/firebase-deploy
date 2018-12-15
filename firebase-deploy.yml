@@ -10,7 +10,7 @@ commands:
     steps:
       - run:
           name: Install Firebase Tools
-          command: npm install firebase-tools
+          command: npm install --prefix=./firebase-deploy firebase-tools
       - run:
           name: Deploy to Firebase
-          command: ./node_modules/.bin/firebase deploy --token=<< parameters.token >>
+          command: ./firebase-deploy/node_modules/.bin/firebase deploy --token=<< parameters.token >>
