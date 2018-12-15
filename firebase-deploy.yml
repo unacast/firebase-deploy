@@ -1,0 +1,15 @@
+version: 2.1
+jobs:
+  firebase-deploy:
+    executor: install-and-deploy
+    steps:
+      - run:
+          name: Install Firebase Tools
+          command: npm install firebase-tools
+      - run:
+          name: Deploy to Firebase
+          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
+executors:
+  install-and-deploy:
+    docker:
+      - image: circleci/node:8
