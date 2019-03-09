@@ -4,6 +4,8 @@
 
 ## Usage
 
+[Read the docs](https://circleci.com/orbs/registry/orb/azdevs/firebase-deploy)
+
 Example `.circleci/config.yaml`
 
 ```yaml
