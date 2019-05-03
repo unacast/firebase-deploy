@@ -11,13 +11,17 @@ commands:
         type: string
         default: "default"
         description: Firebase project alias to deploy to
+      message:
+        type: string
+        default: ""
+        description: An optional message describing this deploy  
     steps:
       - run:
           name: Install Firebase Tools
           command: npm install --prefix=./firebase-deploy firebase-tools
       - run:
           name: Deploy to Firebase
-          command: ./firebase-deploy/node_modules/.bin/firebase deploy --token=<< parameters.token >> -P << parameters.alias >>
+          command: ./firebase-deploy/node_modules/.bin/firebase deploy --token=<< parameters.token >> -P << parameters.alias >> -m << parameters.message >>
 examples:
   default:
     description: Deploying to your "default" Firebase project alias
@@ -99,6 +103,7 @@ examples:
             - firebase-deploy/deploy:
                 token: $FIREBASE_DEPLOY_TOKEN
                 alias: staging # name of an alias from your .firebaserc
+                message: "This is an important message"
       workflows:
         build-and-deploy:
           jobs:
